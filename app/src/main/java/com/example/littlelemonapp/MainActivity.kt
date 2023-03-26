@@ -3,16 +3,11 @@ package com.example.littlelemonapp
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.rememberScrollState
-import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.Scaffold
 import androidx.compose.material.rememberScaffoldState
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.rememberCoroutineScope
-import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
-import androidx.navigation.NavHostController
 import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
@@ -34,24 +29,14 @@ class MainActivity : ComponentActivity() {
 
 @Composable
 fun AppScreen() {
-    // sets and remembers the basic state for a scaffold e.g. Drawer configuration:
-    val scaffoldState = rememberScaffoldState()
-    val scope = rememberCoroutineScope()
-    Scaffold(
-        scaffoldState = scaffoldState,
-        drawerContent = { DrawerPanel(scaffoldState = scaffoldState, scope = scope) },
-        topBar = {
-            TopAppBar(scaffoldState = scaffoldState, scope = scope)
-        }
-    ) {
         MyNavigation()
-    }
 }
 
 @Composable
 fun MyNavigation() {
     val navigationController = rememberNavController()
-    NavHost(navController = navigationController, startDestination = Home.route) {
+    NavHost(navController = navigationController, startDestination = Login.route) {
+        composable(Login.route) { LoginScreen(navigationController = navigationController) }
         composable(Home.route) { HomeScreen(navController = navigationController) }
         composable(
             DishDetails.route + "/{${DishDetails.argDishId}}",

@@ -21,10 +21,11 @@ import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.text.input.TextFieldValue
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.navigation.NavHostController
 
 
 @Composable
-fun LoginScreen() {
+fun LoginScreen(navigationController: NavHostController) {
     var context = LocalContext.current
     var username by remember { mutableStateOf(TextFieldValue("")) }
     var password by remember { mutableStateOf(TextFieldValue("")) }
@@ -60,10 +61,13 @@ fun LoginScreen() {
         // Submit Button:
         Button(
             onClick = {
-                if (username.text == "John" && password.text == "helloworld")
+                if (username.text == "John" && password.text == "helloworld") {
                     Toast.makeText(context, "Welcome to Little Lemon!", Toast.LENGTH_SHORT).show()
-                else
+                    navigationController.navigate(Home.route)
+                }
+                else {
                     Toast.makeText(context, "Invalid credentials. Please try again.", Toast.LENGTH_SHORT).show()
+                }
             },
             shape = RoundedCornerShape(10.dp),
             colors = ButtonDefaults.buttonColors(backgroundColor = Color(0xFF495E57)),
@@ -74,10 +78,4 @@ fun LoginScreen() {
     }
 }
 
-// For Preview in Android Studio:
-@Preview(showSystemUi = true, showBackground = true)
-@Composable
-fun LoginScreenPreview(){
-    LoginScreen()
-}
 
