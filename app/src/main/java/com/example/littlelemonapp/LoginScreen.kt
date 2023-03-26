@@ -73,7 +73,10 @@ fun LoginScreen(navigationController: NavHostController) {
             colors = ButtonDefaults.buttonColors(backgroundColor = Color(0xFF495E57)),
             modifier = Modifier.padding(10.dp)
         ) {
-            Text(text = "Login", color = Color(0xFFEDEFEE))
+            Text(
+                text = "Login",
+                color = Color(0xFFEDEFEE)
+            )
         }
     }
 }

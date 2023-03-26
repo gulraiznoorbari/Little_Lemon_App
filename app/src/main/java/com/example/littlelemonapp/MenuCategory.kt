@@ -18,12 +18,11 @@ import androidx.compose.ui.unit.dp
 @Composable
 fun MenuCategoryPanel() {
     Row(
+        horizontalArrangement = Arrangement.SpaceEvenly,
         modifier = Modifier
             .fillMaxWidth()
-            .horizontalScroll(rememberScrollState()),
-        horizontalArrangement = Arrangement.SpaceEvenly,
-
-        ) {
+            .horizontalScroll(rememberScrollState())
+    ) {
         Categories.forEach {
             MenuCategory(category = it)
         }

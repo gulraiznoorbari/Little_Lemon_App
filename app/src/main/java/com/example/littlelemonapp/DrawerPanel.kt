@@ -16,7 +16,11 @@ import kotlinx.coroutines.launch
 @Composable
 fun DrawerPanel(scaffoldState: ScaffoldState, scope: CoroutineScope) {
     List(10) {
-        Text(text = "Item $it", modifier = Modifier.padding(horizontal = 20.dp, vertical = 10.dp))
+        Text(
+            text = "Item $it",
+            modifier = Modifier
+                .padding(horizontal = 20.dp, vertical = 10.dp)
+        )
     }
     IconButton(onClick = { scope?.launch { scaffoldState.drawerState.close() } }) {
         Icon(imageVector = Icons.Default.ExitToApp, contentDescription = "Exit Icon")

@@ -21,7 +21,6 @@ class MainActivity : ComponentActivity() {
         setContent {
             LittleLemonAppTheme {
                 AppScreen()
-//                    LoginScreen()
             }
         }
     }
@@ -42,7 +41,8 @@ fun MyNavigation() {
             DishDetails.route + "/{${DishDetails.argDishId}}",
             arguments = listOf(
                 navArgument(DishDetails.argDishId) { type = NavType.IntType }
-            )) {
+            )
+        ) {
             val id = requireNotNull(it.arguments?.getInt(DishDetails.argDishId)) { "Dish id is null" }
             DishDetails(id)
         }
