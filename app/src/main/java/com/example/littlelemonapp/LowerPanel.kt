@@ -1,5 +1,6 @@
 package com.example.littlelemonapp
 
+import android.telecom.Call
 import android.util.Log
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.*
@@ -51,7 +52,10 @@ fun WeeklySpecialCard() {
 @Composable
 fun MenuDish(navController: NavHostController? = null, dish: Dish) {
     Card(onClick = {
-        navController?.navigate(DishDetails.route + "/${dish.id}")
+        navController?.navigate(DishDetails.route + "/${dish.id}") {
+            launchSingleTop = true
+            popUpTo(DishDetails.route + "/${dish.id}")
+        }
     }) {
         Row(
             modifier = Modifier

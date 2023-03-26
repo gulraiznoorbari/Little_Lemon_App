@@ -10,7 +10,6 @@ import androidx.navigation.NavHostController
 @Composable
 fun HomeScreen(navController: NavHostController) {
     Column {
-        TopAppBar()
         UpperPanel()
         LowerPanel(navController, DishInfo.dishes)
     }

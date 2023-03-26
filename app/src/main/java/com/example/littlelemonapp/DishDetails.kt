@@ -23,7 +23,6 @@ fun DishDetails(id: Int) {
         verticalArrangement = Arrangement.spacedBy(10.dp),
         modifier = Modifier.padding(start = 10.dp, end = 10.dp)
     ) {
-        TopAppBar()
         Image(
             painter = painterResource(id = dish.imageResource),
             contentDescription = "Dish Image",

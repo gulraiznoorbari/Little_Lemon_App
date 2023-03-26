@@ -24,28 +24,32 @@ class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
-            // sets and remembers the basic state for a scaffold e.g. Drawer configuration:
-//            val scaffoldState = rememberScaffoldState()
-//            val scope = rememberCoroutineScope()
-//            Scaffold(
-//                scaffoldState = scaffoldState,
-//                drawerContent = { DrawerPanel(scaffoldState = scaffoldState, scope = scope) },
-//                topBar = {
-//                    TopAppBar(scaffoldState = scaffoldState, scope = scope)
-//                }
-//            ) {
             LittleLemonAppTheme {
                 AppScreen()
 //                    LoginScreen()
             }
-//            }
         }
     }
 }
 
-
 @Composable
 fun AppScreen() {
+    // sets and remembers the basic state for a scaffold e.g. Drawer configuration:
+    val scaffoldState = rememberScaffoldState()
+    val scope = rememberCoroutineScope()
+    Scaffold(
+        scaffoldState = scaffoldState,
+        drawerContent = { DrawerPanel(scaffoldState = scaffoldState, scope = scope) },
+        topBar = {
+            TopAppBar(scaffoldState = scaffoldState, scope = scope)
+        }
+    ) {
+        MyNavigation()
+    }
+}
+
+@Composable
+fun MyNavigation() {
     val navigationController = rememberNavController()
     NavHost(navController = navigationController, startDestination = Home.route) {
         composable(Home.route) { HomeScreen(navController = navigationController) }
