@@ -24,8 +24,8 @@ fun HomeScreen(navController: NavHostController) {
     ) {
         Column {
             UpperPanel()
+            MenuCategoryPanel()
             LowerPanel(navController, DishInfo.dishes)
-
         }
     }
 }
